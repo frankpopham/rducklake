@@ -1,23 +1,26 @@
-# rducklake
-Frank Popham
+---
+title: "rducklake"
+author: "Frank Popham"
+format: gfm
+eval: false
+echo: true
+---
 
-rducklake runs a [ducklake](https://ducklake.select/) from R. It is an
-alternative to the excellent
-[ducklake-r](https://tgerke.github.io/ducklake-r/).
+rducklake runs a [ducklake](https://ducklake.select/) from R. It is an alternative to the excellent [ducklake-r](https://tgerke.github.io/ducklake-r/).
+
 
 ## Installation
 
-You can install the development version of rducklake from
-[GitHub](https://github.com/)
+You can install the development version of rducklake from [GitHub](https://github.com/)
 
-``` r
+```{r}
 # install.packages("pak")
 pak::pak("frankpopham/rducklake")
 ```
 
-## Create a ducklake
+## Create a ducklake 
 
-``` r
+```{r}
 library(rducklake)
 
 # Make a duckdb connection and database (default is memory - in RAM)
@@ -58,11 +61,12 @@ detach_ducklake(my_con, "my_ducklake", "memory")
 # Close connection
 
 disconnect_duckdb(my_con)
+
 ```
 
 # Attach to an exisitng ducklake
 
-``` r
+```{r}
 library(rducklake)
 
 # Make a duckdb connection and database (default is memory - in RAM)
@@ -93,4 +97,7 @@ detach_ducklake(my_con, "my_ducklake", "memory")
 # Close connection
 
 disconnect_duckdb(my_con)
+
+
 ```
+
