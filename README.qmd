@@ -64,7 +64,7 @@ disconnect_duckdb(my_con)
 
 ```
 
-# Attach to an exisitng ducklake
+## Attach to an exisitng ducklake
 
 ```{r}
 library(rducklake)
