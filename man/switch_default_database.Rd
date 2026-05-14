@@ -21,11 +21,12 @@ Switch the default database on a duckdb connection
 my_con <- connect_duckdb()
 
 attach_ducklake(my_con,
-   ducklake_path = tempfile(pattern = "metadata.ducklake"),
+   ducklake_filename = tempfile(pattern = "metadata.ducklake"),
    ducklake_alias = "my_ducklake",
    create_if_not_exists = TRUE,
+   read_only = FALSE,
    ducklake_encrypt = FALSE,
-   parquet_data_path = tempdir())
+   parquet_directory = tempdir())
 
 switch_default_database(my_con, "memory")
 

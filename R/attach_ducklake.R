@@ -22,6 +22,7 @@
 #'    ducklake_filename = tempfile(pattern = "metadata.ducklake"),
 #'    ducklake_alias = "my_ducklake",
 #'    create_if_not_exists = TRUE,
+#'    read_only = FALSE,
 #'    ducklake_encrypt = FALSE,
 #'    parquet_directory = tempdir())
 #'

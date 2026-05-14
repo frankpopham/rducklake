@@ -6,25 +6,27 @@
 \usage{
 attach_ducklake(
   conduckdb,
-  ducklake_path = NULL,
+  ducklake_filename = NULL,
   ducklake_alias = NULL,
   create_if_not_exists = FALSE,
+  read_only = TRUE,
   ducklake_type = "duckdb",
-  ducklake_encrypt = TRUE,
-  parquet_encrypt = TRUE,
-  parquet_data_path = "data_files",
-  override_data_path = FALSE
+  ducklake_encrypt = FALSE,
+  parquet_encrypt = FALSE,
+  parquet_directory = "data_files",
+  override_parquet_directory = FALSE
 )
 }
 \arguments{
 \item{conduckdb}{an existing duckdb connection}
 
-\item{ducklake_path}{file name (and directory if not in working directory) of ducklake}
+\item{ducklake_filename}{file name (and directory if not in working directory) of ducklake}
 
-\item{ducklake_alias}{short alias to use instead of ducklake_path when referring to ducklake database}
+\item{ducklake_alias}{short alias to use instead of ducklake_filename when referring to ducklake database}
 
-\item{create_if_not_exists}{create a new ducklake if it does not already exist (default is FALSE).
-If FALSE then attaches in READ_ONLY mode (read_only will be separate option in future)}
+\item{create_if_not_exists}{create a new ducklake if it does not already exist (default is FALSE)}
+
+\item{read_only}{connect read only to the ducklake. if create_if_not_exists is TRUE this should be FALSE (default is TRUE)}
 
 \item{ducklake_type}{which SQL software to use as catalog for metadata (duckdb or sqlite)}
 
@@ -32,9 +34,9 @@ If FALSE then attaches in READ_ONLY mode (read_only will be separate option in f
 
 \item{parquet_encrypt}{should the parquet files storing tables be encrypted (default is TRUE)}
 
-\item{parquet_data_path}{directory where the parquet files are / should be stored (default is "data_files")}
+\item{parquet_directory}{directory where the parquet files are / should be stored (default is "data_files")}
 
-\item{override_data_path}{if data path is different to default should this override the default (default is FALSE)}
+\item{override_parquet_directory}{if data path is different to default should this overrides the default (default is FALSE)}
 }
 \value{
 Attaches the ducklake to your duckdb connection and with message confirming the ducklake is the default database.
@@ -47,11 +49,12 @@ Attach, create or update a ducklake
 my_con <- connect_duckdb()
 
 attach_ducklake(my_con,
-   ducklake_path = tempfile(pattern = "metadata.ducklake"),
+   ducklake_filename = tempfile(pattern = "metadata.ducklake"),
    ducklake_alias = "my_ducklake",
    create_if_not_exists = TRUE,
+   read_only = FALSE,
    ducklake_encrypt = FALSE,
-   parquet_data_path = tempdir())
+   parquet_directory = tempdir())
 
 switch_default_database(my_con, "memory")
 
