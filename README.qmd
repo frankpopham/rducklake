@@ -30,13 +30,14 @@ my_con <- connect_duckdb()
 # Create a basic new ducklake with no encryption in the working directory
 
 attach_ducklake(my_con,
-                ducklake_path = "example.ducklake",
+                ducklake_filename = "example.ducklake",
                 ducklake_alias = "my_ducklake",
                 create_if_not_exists = TRUE,
+                read_only = FALSE,
                 ducklake_type = "duckdb",
                 ducklake_encrypt = FALSE,
                 parquet_encrypt = FALSE,
-                parquet_data_path = "data_files")
+                parquet_directory= "data_files")
 
 # See attached databases (the default is now my_ducklake)
 
@@ -76,7 +77,7 @@ my_con <- connect_duckdb()
 # Attach to an existing ducklake and make it the default database
 
 attach_ducklake(my_con,
-                ducklake_path = "example.ducklake",
+                ducklake_filename = "example.ducklake",
                 ducklake_alias = "my_ducklake",
                 ducklake_encrypt = FALSE)
 
