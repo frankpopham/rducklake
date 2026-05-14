@@ -9,7 +9,7 @@ detach_ducklake(conduckdb, ducklake_alias, new_default = "memory")
 \arguments{
 \item{conduckdb}{an existing duckdb connection}
 
-\item{ducklake_alias}{short alias to use instead of ducklake_path when referring to ducklake database}
+\item{ducklake_alias}{short alias to use instead of ducklake_filename when referring to ducklake database}
 
 \item{new_default}{A new default database (default is memory).
 Run \code{attached_databases()} for a list of currently attached databases}
@@ -24,11 +24,11 @@ Detach a ducklake from a duckdb connection
 my_con <- connect_duckdb()
 
 attach_ducklake(my_con,
-   ducklake_path = tempfile(pattern = "metadata.ducklake"),
+   ducklake_filename = tempfile(pattern = "metadata.ducklake"),
    ducklake_alias = "my_ducklake",
    create_if_not_exists = TRUE,
    ducklake_encrypt = FALSE,
-   parquet_data_path = tempdir())
+   parquet_directory = tempdir())
 
 switch_default_database(my_con, "memory")
 
